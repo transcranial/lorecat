@@ -1,0 +1,31 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div id="entry" class="container-fluid text-center">
+  <label for="title" class="control-label">Create a quiz from Wikipedia page:</label>
+  <angucomplete id="pageSearch"
+            placeholder="search for page"
+            pause="300"
+            selectedobject="pageSearchTitle"
+            url="/api/autocomplete/wikipedia/"
+            datafield="titles"
+            titlefield="title"
+            descriptionfield=""
+            imagefield=""
+            minlength="1"
+            inputclass="form-input"></angucomplete>
+  <button type="button" class="submit-button" ng-click="createQuiz()"><i class="fa fa-pencil"></i> Create</button>
+</div>
+
+<div id="marketing" class="container-fluid">
+  <div class="col-md-4 text-center marketing-item"><i class="fa fa-flash fa-5x"></i><br><br>Create interactive quizzes from Wikipedia pages. Relevant terms are extracted and replaced with fill-in-the-blanks.</div>
+  <div class="col-md-4 text-center marketing-item"><i class="fa fa-edit fa-5x"></i><br><br>Retain more knowledge through interactive reading and learning.</div>
+  <div class="col-md-4 text-center marketing-item"><i class="fa fa-folder-o fa-5x"></i><br><br><a href="/signup">Create an account</a> and save your work. You'll have access to your own library of quizzes.</div>
+</div>
+
+<div id="bar2" class="container-fluid text-center">
+  <h3>Coming soon...</h3>
+  <p><i class="fa fa-file-text-o fa-3x"></i></p>
+  <p>Create quizzes from your own uploaded text documents.</p>
+</div>
+
+<div ng-include="'partials/footer'"></div>

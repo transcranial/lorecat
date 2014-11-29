@@ -1,0 +1,56 @@
+<div ng-include="'partials/navbar.html'"></div>
+
+<div class="container">
+
+  <div class="col-md-4"></div>
+
+  <div class="col-md-4">
+
+    <div class="row text-center login-method">
+      <p ng-if="currentUser.provider === 'local'">Signed in using a Lorecat account.</p>
+      <p ng-if="currentUser.provider !== 'local'">Signed in using:</p>
+      <p ng-if="currentUser.provider === 'google'"><i class="fa fa-google-plus-square fa-4x"></i><br>Google</p>
+      <p ng-if="currentUser.provider === 'facebook'"><i class="fa fa-facebook-square fa-4x"></i><br>Facebook</p>
+      <p ng-if="currentUser.provider === 'twitter'"><i class="fa fa-twitter-square fa-4x"></i><br>Twitter</p>
+      <p class="text-left">Note: You should use the same sign-in method in the future to keep all your saved quizzes and settings consistent.</p>
+    </div>
+
+    <div class="row form-panel" ng-if="currentUser.provider === 'local'">
+      <h2>Change password</h2>
+
+      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+        
+        <div class="form-group">
+          <label>Current password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                 mongoose-error/>    
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>New password</label>
+
+          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" 
+                 ng-minlength="3"
+                 required/>
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+            Password must be at least 3 characters.
+          </p>
+        </div>
+
+        <p class="help-block"> {{ message }} </p>
+
+        <button class="btn btn-lg btn-default" type="submit">Save changes</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+
+</div>
+
+
+<div ng-include="'partials/footer.html'"></div>

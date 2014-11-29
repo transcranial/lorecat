@@ -1,0 +1,265 @@
+/* Color Scheme
+ * https://kuler.adobe.com/CS04-color-theme-1994456/
+ * #F6F792 (yellow)
+ * #333745 (black)
+ * #77C4D3 (blue)
+ * #DAEDE2 (green-yellow)
+ * #EA2E49 (red)
+ */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background-color: #EEEEEE;
+  background-image: url('../images/bgpattern.png');
+  font-family: 'Cabin', sans-serif;
+  margin-bottom: 30px;
+ }
+
+ h2 {
+  font-family: 'Josefin Slab', 'Cabin', sans-serif;
+  font-size: 2.2em;
+  font-weight: bold;
+  color: #EEEEEE;
+ }
+
+.header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.header.small {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+  background: #77C4D3;
+  color: #333745;
+}
+.header-logo.small {
+  margin-left: 20px;
+}
+.header-login {
+  height: 100%;
+  list-style: none;
+  margin-right: 20px;
+  margin-top: 3px;
+}
+.header-login.small, .header-nav.small {
+  margin-top: 15px;
+}
+.header-login-item, .header-nav-item {
+  font-size: 14px;
+  display: inline-table;
+  margin-left: 10px;
+  color: #DAEDE2;
+}
+.header-login-item a, .header-nav-item a {
+  padding: 5px;
+  color: #EEEEEE;
+  text-decoration: none;
+  border-radius: 3px;
+  -webkit-transition: background-color 500ms ease-out;
+  -moz-transition: background-color 500ms ease-out;
+  -o-transition: background-color 500ms ease-out;
+  transition: background-color 500ms ease-out;
+}
+.header-login-item a:hover, .header-login-item.active a, .header-nav-item a:hover, .header-nav-item.active a {
+  color: #77C4D3;
+  background-color: #333745;
+}
+.header-login-item.active a:hover, .header-nav-item.active a:hover {
+  cursor: default;
+}
+
+#userWelcomeMsg {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  color: #4B4B4B;
+  display: inline-table;
+  margin-left: 10px;
+}
+#userWelcomeMsg:hover {
+  cursor: default;
+}
+
+#entry {
+  width: 100%;
+  color: #EEEEEE;
+  background-color: #77C4D3;
+  text-align: center;
+  padding: 30px 5px;
+  font-family: 'Josefin Slab', 'Cabin', sans-serif;
+}
+#entry label {
+  font-size: 1.5em;
+}
+#entry .form-input {
+  width: 100%;
+  margin-bottom: 30px;
+  font-size: 20px;
+  background-color: #EEEEEE;
+  color: #333745;
+  border: 5px solid #77C4D3;
+  border-radius: 0;
+  padding: 7px 20px;
+  -webkit-transition: border-color 500ms linear;
+  -moz-transition: border-color 500ms linear;
+  -o-transition: border-color 500ms linear;
+  transition: border-color 500ms linear;
+}
+#entry .form-input:focus {
+  background-color: #EEEEEE;
+  color: #333745;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: #DAEDE2;
+  outline: none;
+}
+#entry .angucomplete-holder {
+  position: relative;
+  width: 40%;
+  margin: 0 auto;
+}
+#entry .angucomplete-dropdown {
+  border: 5px solid #DAEDE2;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  z-index: 9999;
+  position: absolute;
+  top: 48px;
+  left: 0px;
+  background-color: #DAEDE2;
+  font-family: 'Cabin', sans-serif;
+}
+#entry .angucomplete-searching {
+    color: #333745;
+    font-size: 14px;
+}
+#entry .angucomplete-description {
+    font-size: 14px;
+}
+#entry .angucomplete-row {
+    padding: 5px;
+    color: #333745;
+
+}
+#entry .angucomplete-selected-row, #entry .angucomplete-row:hover {
+    background-color: #333745;
+    color: #77C4D3;
+}
+#entry .angucomplete-image-holder {
+    padding-top: 2px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+#entry .angucomplete-image {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    border-color: #ececec;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#entry .angucomplete-image-default {
+    /* Add your own default image here
+     background-image: url('/assets/default.png');
+    */
+    background-position: center;
+    background-size: contain;
+    height: 34px;
+    width: 34px;
+}
+#entry button {
+  background-color: #77C4D3;
+  color: #EEEEEE;
+  border: 1px solid #EEEEEE;
+  border-radius: 0;
+  padding: 10px 20px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.1em;
+  -webkit-transition: background 500ms ease-out;
+  -moz-transition: background 500ms ease-out;
+  -o-transition: background 500ms ease-out;
+  transition: background 500ms ease-out;
+}
+#entry button:hover {
+  outline: none;
+  background-color: #EEEEEE;
+  color: #77C4D3;
+}
+#entry button:focus, #entry button:active {
+  outline: none;
+}
+
+#marketing {
+  font-family: 'Josefin Slab', 'Cabin', sans-serif;
+  font-size: 1.8em;
+  padding: 80px 30px;
+  color: #DAEDE2;
+}
+#marketing a {
+  color: #77C4D3;
+  text-decoration: none;
+}
+#marketing a:hover {
+  color: #F6F792;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width : 992px) {
+  #marketing {
+    padding: 0 30px;
+  }
+  #marketing .marketing-item {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+#bar2 {
+  background-image: url('../images/bgbar2.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 220px;
+  color: #77C4D3;
+  background-color: #333745;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 60px;
+}
+#bar2 h3 {
+  font-family: 'Josefin Slab', 'Cabin', sans-serif;
+  font-weight: bold;
+  font-size: 2.2em;
+  color: #77C4D3;
+  padding: 20px 10px;
+}
+#bar2 p {
+  font-family: 'Cabin', sans-serif;
+  font-size: 1em;
+  color: #EEEEEE;
+}
+
+.footer {
+  color: #555555;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+}
+.footer a {
+  color: #888877;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #AAAA99;
+  text-decoration: underline;
+}

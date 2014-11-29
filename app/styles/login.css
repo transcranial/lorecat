@@ -1,0 +1,82 @@
+.form-panel {
+  color: #EEEEEE;
+  font-family: 'Josefin Slab', 'Cabin', sans-serif;
+}
+
+.form-panel p {
+  color: #EEEEEE;
+  font-family: 'Cabin', sans-serif;
+}
+
+.form-panel label {
+  font-weight: normal;
+  font-family: 'Cabin', sans-serif;
+}
+
+.form-panel .form-control {
+  font-weight: normal;
+  color: #333745;
+  font-family: 'Cabin', sans-serif;
+  border-radius: 0px;
+}
+
+.form-panel .form-control:focus {
+  border-color: #77C4D3;
+  outline: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(119,196,211, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(119,196,211, .6);
+}
+
+.form-panel button {
+  font-weight: normal;
+  font-size: 16px;
+  color: #333745;
+  border: none;
+  border-radius: 0px;
+  font-family: 'Cabin', sans-serif;
+  -webkit-transition: background-color 500ms ease-out;
+  -moz-transition: background-color 500ms ease-out;
+  -o-transition: background-color 500ms ease-out;
+  transition: background-color 500ms ease-out;
+}
+.form-panel button:hover {
+  color: #EEEEEE;
+  background-color: #77C4D3;
+}
+.form-panel button:focus, .form-panel button:active {
+  outline: none;
+}
+
+.form-panel a {
+  color: #77C4D3;
+}
+.form-panel a:hover {
+  color: #DAEDE2;
+}
+
+.login-method {
+  color: #EEEEEE;
+  font-family: 'Cabin', sans-serif;
+  padding: 25px 30px;
+}
+
+.social-login-panel {
+  margin-top: 60px;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: #EEEEEE;
+  border: 1px solid #EEEEEE;
+}
+
+.social-login-panel .social-login {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.btn-social, .btn-social:hover {
+  border: none;
+  width: 100%;
+  font-family: 'Cabin', sans-serif;
+}

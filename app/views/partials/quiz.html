@@ -1,0 +1,112 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div class="container-fluid titlebar text-center">
+  <div class="col-md-4">
+    <div id="searchbar" >  
+      <angucomplete id="pageSearch"
+            placeholder="create new quiz"
+            pause="300"
+            selectedobject="pageSearchTitle"
+            url="/api/autocomplete/wikipedia/"
+            datafield="titles"
+            titlefield="title"
+            descriptionfield=""
+            imagefield=""
+            minlength="1"
+            inputclass="form-input"></angucomplete>
+      <button id="button-submit" type="button" ng-click="createQuiz()">Create</button>
+      <button id="button-settings" type="button" ng-click="loadSettings(); settingsShow = true"><i class="fa fa-sliders"></i></button>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="title">
+      {{ articleTitle | uppercase }}
+      <span ng-if="!loaded"> (loading...)</span>
+      <span ng-if="loadingError"> (error loading)</span>
+    </div>
+    <div class="progress-meter" ng-model="quizItemCounts" ng-show="loaded">{{ quizItemCounts.numCorrect }} / {{ quizItemCounts.totNumber }} items completed</div>
+  </div>
+  <div class="col-md-4">
+    <div class="actionbar">
+      <div class="action-item"><a ng-href="http://en.wikipedia.org/wiki/{{ articleTitleForUrl }}" target="_blank"><i class="fa fa-link fa-1x"></i></a></div>
+      <div class="action-item" ng-click="saveQuizShow = true"><i class="fa fa-save fa-1x"></i></div>
+      <div class="action-item" ng-click="refreshQuiz()"><i class="fa fa-refresh fa-1x"></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+
+  <div class="visible-md visible-lg section-nav col-md-3" bs-scrollspy-list bs-affix ensure-nav-in-view>  
+    <ul>      
+      <li bs-scrollspy id="sec-nav-{{ $index }}" data-target="#sec-{{ $index }}" ng-repeat="section in quizSections" ng-click="scrollToSection($index)" ng-style="{'padding-left': 10 + section.sectionLevel * 15 + 'px'}">
+          {{ section.sectionTitle }}
+      </li>
+    </ul>
+  </div>
+  <div class="visible-sm visible-xs section-nav col-md-3">  
+    <ul>      
+      <li id="sec-nav-{{ $index }}" ng-repeat="section in quizSections" ng-click="scrollToSection($index)" ng-style="{'padding-left': 10 + section.sectionLevel * 15 + 'px'}">
+          {{ section.sectionTitle }}
+      </li>
+    </ul>
+  </div>
+  <div class="visible-md visible-lg section-nav col-md-3"></div>
+
+  <div class="section-content col-md-9">
+    <div id="sec-{{ $index }}" ng-repeat="section in quizSections" quizzify>
+      <img class="thumbnail-image" ng-src="{{ thumbnailURL }}" ng-if="$index == 0" />
+    </div>
+
+    <div ng-include="'partials/footer'" ng-if="loaded"></div>
+  </div>
+
+</div>
+
+
+<div class="md-modal md-effect" ng-class="{'md-show': settingsShow}">
+    <div class="md-content">
+        <h3>Quiz Settings <button type="button" id="button-save" class="pull-right" ng-click="saveSettings(); settingsShow = false"><i class="fa fa-check"></i> Save</button></h3>
+        <div class="md-content-main">
+            <div class="md-content-item"><i class="fa fa-long-arrow-right"></i> Maximum number of unique terms to extract (terms for creating quiz items):<br>
+              <div class="btn-group">
+                <label class="button-toggle" ng-model="termLimit" btn-radio="5" ng-class="{'active': termLimit == 5}">5</label>
+                <label class="button-toggle" ng-model="termLimit" btn-radio="10" ng-class="{'active': termLimit == 10}">10</label>
+                <label class="button-toggle" ng-model="termLimit" btn-radio="20" ng-class="{'active': termLimit == 20}">20</label>
+                <label class="button-toggle" ng-model="termLimit" btn-radio="30" ng-class="{'active': termLimit == 30}">30</label>
+                <label class="button-toggle" ng-model="termLimit" btn-radio="40" ng-class="{'active': termLimit == 40}">40</label>
+              </div>
+            </div>
+            <div class="md-content-item"><i class="fa fa-long-arrow-right"></i> Number of related articles to analyze (a smaller number results in faster quiz creation, a larger number results in higher quality terms extracted):<br>
+              <div class="btn-group">
+                <label class="button-toggle" ng-model="articleLimit" btn-radio="5" ng-class="{'active': articleLimit == 5}">5</label>
+                <label class="button-toggle" ng-model="articleLimit" btn-radio="10" ng-class="{'active': articleLimit == 10}">10</label>
+                <label class="button-toggle" ng-model="articleLimit" btn-radio="20" ng-class="{'active': articleLimit == 20}">20</label>
+                <label class="button-toggle" ng-model="articleLimit" btn-radio="30" ng-class="{'active': articleLimit == 30}">30</label>
+                <label class="button-toggle" ng-model="articleLimit" btn-radio="40" ng-class="{'active': articleLimit == 40}">40</label>
+              </div>
+            </div>
+            <div class="md-content-item"><i class="fa fa-long-arrow-right"></i> Percentage of extracted terms made into quiz items:<br>
+              <div class="btn-group">
+                <label class="button-toggle" ng-model="percentQuiz" btn-radio="25" ng-class="{'active': percentQuiz == 25}">25%</label>
+                <label class="button-toggle" ng-model="percentQuiz" btn-radio="50" ng-class="{'active': percentQuiz == 50}">50%</label>
+                <label class="button-toggle" ng-model="percentQuiz" btn-radio="75" ng-class="{'active': percentQuiz == 75}">75%</label>
+                <label class="button-toggle" ng-model="percentQuiz" btn-radio="100" ng-class="{'active': percentQuiz == 100}">100%</label>
+              </div>
+            </div>   
+        </div>
+    </div>
+</div>
+
+<div class="md-modal md-effect" ng-class="{'md-show': saveQuizShow}">
+    <div class="md-content">
+        <h3>Save Quiz</h3>
+        <div class="md-content-item text-center" ng-hide="{{currentUser}}">
+          You must be logged in to save your quizzes!<br><br><button type="button" id="button-save" class="text-center" ng-click="saveQuizShow = false">Okay</button>
+        </div>
+    </div>
+</div>
+
+<div class="md-overlay" ng-click="settingsShow = false; saveQuizShow = false"></div>
+
+
