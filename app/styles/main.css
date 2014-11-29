@@ -246,6 +246,12 @@ body {
   color: #EEEEEE;
 }
 
+.help p {
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.2em;
+  color: #EEEEEE;
+}
+
 .footer {
   color: #555555;
   position: absolute;
